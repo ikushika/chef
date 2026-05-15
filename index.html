@@ -3,757 +3,562 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>店長紹介 加藤雄大｜土鍋ご飯いくしか</title>
-<meta name="description" content="土鍋ご飯いくしか店長・加藤雄大のストーリー。福島県相馬市出身。東日本大震災の経験と、ワンピースのサンジへの憧れが料理人への道を切り開いた。">
-
+<title>シェフ 加藤雄大｜土鍋ご飯いくしか</title>
+<meta name="description" content="土鍋ご飯いくしかオーナーシェフ・加藤雄大。福島県相馬市出身。座右の銘は「笑う門には福来る」。食を通して世界を笑顔にすることを目指し、渋谷PARCO・中目黒で土鍋ご飯定食屋を運営。">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --ink: #1a1410;
-    --warm: #ffffff;
-    --accent: #8b3a1a;
-    --gold: #c4922a;
-    --mid: #6b5c4e;
-    --light: #f5f0e8;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--warm);
-    color: var(--ink);
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    overflow-x: hidden;
-  }
-
-  /* ── HERO PORTRAIT ── */
-  .hero__portrait {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 28px;
-    position: relative;
-    border: 2px solid rgba(196,146,42,.4);
-    background: var(--light);
-  }
-
-  .hero__portrait-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    display: block;
-  }
-
-  .hero__portrait-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(0,0,0,.2);
-  }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100svh;
-    display: grid;
-    place-items: center;
-    position: relative;
-    overflow: hidden;
-    background: #ffffff;
-  }
-
-  .hero__bg {
-    position: absolute;
-    inset: 0;
-background: #ffffff;
-  }
-
-  .hero__grain {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-size: 180px;
-  }
-
-  .hero__content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 40px 24px;
-    animation: fadeUp .9s ease both;
-  }
-
-  .hero__label {
-    font-size: 11px;
-    letter-spacing: .3em;
-    color: var(--gold);
-    margin-bottom: 24px;
-    text-transform: uppercase;
-  }
-
-  .hero__name {
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    font-size: clamp(52px, 10vw, 96px);
-    font-weight: 800;
-    color: var(--ink);
-    line-height: 1.1;
-    letter-spacing: .04em;
-  }
-
-  .hero__name span {
-    display: block;
-    font-size: clamp(18px, 3.5vw, 28px);
-    font-weight: 400;
-    color: var(--gold);
-    letter-spacing: .2em;
-    margin-top: 12px;
-  }
-
-  .hero__tagline {
-    margin-top: 32px;
-    font-size: clamp(14px, 2.5vw, 18px);
-    color: var(--mid);
-    line-height: 2;
-    letter-spacing: .05em;
-  }
-
-  .hero__scroll {
-    position: absolute;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: rgba(0,0,0,.3);
-    font-size: 10px;
-    letter-spacing: .2em;
-    animation: pulse 2s ease infinite;
-  }
-
-  .hero__scroll::after {
-    content: '';
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(to bottom, rgba(0,0,0,.3), transparent);
-  }
-
-  /* ── SECTIONS ── */
-  .section {
-    padding: clamp(64px, 10vw, 120px) clamp(24px, 6vw, 80px);
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .section--dark {
-    background: #ffffff;
-    color: var(--warm);
-    max-width: 100%;
-    padding: clamp(64px, 10vw, 120px) clamp(24px, 6vw, 80px);
-  }
-
-  .section--dark .section__inner {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .section__eyebrow {
-    font-size: 10px;
-    letter-spacing: .35em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-  }
-
-  .section__title {
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    font-size: clamp(28px, 5vw, 48px);
-    font-weight: 800;
-    line-height: 1.3;
-    margin-bottom: 40px;
-  }
-
-  .section--dark .section__title {
-    color: var(--ink);
-  }
-
-  /* ── STORY BLOCKS ── */
-  .story {
-    display: grid;
-    gap: 48px;
-  }
-
-  .story__item {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 24px;
-    align-items: start;
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity .7s ease, transform .7s ease;
-  }
-
-  .story__item.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  .story__year {
-    font-size: 12px;
-    letter-spacing: .15em;
-    color: var(--gold);
-    padding-top: 4px;
-    text-align: right;
-    border-right: 1px solid var(--gold);
-    padding-right: 20px;
-  }
-
-  .story__body h3 {
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
-  .story__body p {
-    font-size: 15px;
-    line-height: 2;
-    color: var(--mid);
-  }
-
-  .section--dark .story__body p {
-    color: rgba(245,240,232,.7);
-  }
-
-  /* ── QUOTE ── */
-  .quote-block {
-    border-left: 3px solid var(--gold);
-    padding: 24px 32px;
-    margin: 48px 0;
-    background: var(--light);
-    border-radius: 0 8px 8px 0;
-  }
-
-  .quote-block p {
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    font-size: clamp(18px, 3vw, 24px);
-    font-weight: 600;
-    line-height: 1.8;
-    color: var(--accent);
-  }
-
-  .quote-block cite {
-    display: block;
-    margin-top: 12px;
-    font-size: 12px;
-    letter-spacing: .2em;
-    color: var(--mid);
-    font-style: normal;
-  }
-
-  /* ── VALUES GRID ── */
-  .values {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-    margin-top: 40px;
-  }
-
-  .value-card {
-    background: var(--light);
-    border: 1px solid rgba(139,58,26,.15);
-    border-radius: 12px;
-    padding: 28px 24px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity .6s ease, transform .6s ease;
-  }
-
-  .value-card.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  .value-card__icon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 14px;
-    color: var(--accent);
-  }
-
-  .value-card__icon svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .value-card__title {
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--accent);
-  }
-
-  .value-card__text {
-    font-size: 14px;
-    line-height: 1.9;
-    color: var(--mid);
-  }
-
-  /* ── PORTRAIT ── */
-  .portrait-wrap {
-    background: var(--warm);
-    display: flex;
-    justify-content: center;
-    padding: 48px 24px 0;
-    position: relative;
-    z-index: 10;
-  }
-
-  .portrait-slot {
-    width: min(320px, 100%);
-    aspect-ratio: 3/4;
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    background: var(--light);
-    border: 1.5px dashed rgba(139,58,26,.25);
-    box-shadow: 0 16px 48px rgba(0,0,0,.10);
-  }
-
-  .portrait-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    display: block;
-  }
-
-  .portrait-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    color: var(--mid);
-    opacity: .5;
-  }
-
-  .portrait-placeholder span {
-    font-size: 12px;
-    letter-spacing: .12em;
-  }
-
-  /* ── PHOTO GRID ── */
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 8px;
-  }
-
-  .photo-slot {
-    aspect-ratio: 4/3;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    background: var(--light);
-    border: 1.5px dashed rgba(139,58,26,.25);
-  }
-
-  .photo-slot img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .photo-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: var(--mid);
-    opacity: .5;
-  }
-
-  .photo-placeholder span {
-    font-size: 11px;
-    letter-spacing: .12em;
-  }
-
-  @media (max-width: 600px) {
-    .photo-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-    .photo-slot:last-child {
-      grid-column: span 2;
-    }
-  }
-
-  /* ── DREAM ── */
-  .dream {
-    background: linear-gradient(135deg, #1a0e06 0%, #2d1a0a 50%, #1a0e06 100%);
-    border-radius: 16px;
-    padding: clamp(40px, 6vw, 80px);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .dream::before {
-    content: '夢';
-    position: absolute;
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    font-size: 320px;
-    font-weight: 800;
-    color: rgba(196,146,42,.06);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    line-height: 1;
-  }
-
-  .dream__title {
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    font-size: clamp(22px, 4vw, 36px);
-    font-weight: 800;
-    color: var(--ink);
-    line-height: 1.5;
-    margin-bottom: 24px;
-    position: relative;
-  }
-
-  .dream__text {
-    font-size: clamp(14px, 2vw, 16px);
-    line-height: 2.2;
-    color: rgba(245,240,232,.75);
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .dream__gold {
-    color: var(--gold);
-    font-weight: 600;
-  }
-
-  /* ── RECRUIT CTA ── */
-  .recruit-cta {
-    background: var(--accent);
-    padding: clamp(56px, 8vw, 96px) clamp(24px, 6vw, 80px);
-    text-align: center;
-  }
-
-  .recruit-cta__title {
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    font-size: clamp(24px, 4.5vw, 42px);
-    font-weight: 800;
-    color: var(--ink);
-    line-height: 1.5;
-    margin-bottom: 16px;
-  }
-
-  .recruit-cta__text {
-    font-size: 15px;
-    color: rgba(255,255,255,.8);
-    line-height: 2;
-    margin-bottom: 40px;
-  }
-
-  .recruit-cta__btn {
-    display: inline-block;
-    background: #fff;
-    color: var(--accent);
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    padding: 18px 48px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: transform .2s ease, box-shadow .2s ease;
-  }
-
-  .recruit-cta__btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0,0,0,.2);
-  }
-
-  /* ── NAV ── */
-  .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 16px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(15,10,7,.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(196,146,42,.2);
-  }
-
-  .nav__logo {
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', serif;
-    font-size: 14px;
-    color: var(--gold);
-    letter-spacing: .15em;
-    text-decoration: none;
-  }
-
-  .nav__back {
-    font-size: 12px;
-    letter-spacing: .15em;
-    color: var(--mid);
-    text-decoration: none;
-    transition: color .2s;
-  }
-
-  .nav__back:hover { color: var(--gold); }
-
-  /* ── DIVIDER ── */
-  .divider {
-    width: 48px;
-    height: 2px;
-    background: var(--gold);
-    margin: 0 auto 40px;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(32px); }
-    to   { opacity: 1; transform: none; }
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: .4; }
-    50% { opacity: .8; }
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .story__item {
-      grid-template-columns: 56px 1fr;
-      gap: 16px;
-    }
-    .story__year {
-      font-size: 10px;
-      padding-right: 12px;
-    }
-    .quote-block {
-      padding: 20px 20px;
-    }
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gold: #c8a96e;
+  --gold-light: #e8d5a8;
+  --gray: #888;
+  --light-gray: #f4f4f2;
+  --border: rgba(0,0,0,.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: multiply;
+}
+.cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: .6;
+}
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+.nav__logo {
+  font-size: 12px; letter-spacing: .25em;
+  color: var(--white); text-decoration: none; text-transform: uppercase;
+}
+.nav__back {
+  font-size: 11px; letter-spacing: .2em;
+  color: var(--white); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav__back::before {
+  content: ''; width: 24px; height: 1px;
+  background: var(--white); display: block;
+  transition: width .3s ease;
+}
+.nav__back:hover::before { width: 40px; }
+
+/* HERO */
+.hero {
+  height: 100svh;
+  background: var(--black);
+  position: relative; overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.hero__left {
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 80px 48px;
+  position: relative; z-index: 2;
+}
+.hero__right { position: relative; overflow: hidden; }
+.hero__portrait {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block; filter: grayscale(20%);
+}
+.hero__right::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--black) 0%, transparent 30%);
+}
+.hero__label {
+  font-size: 10px; letter-spacing: .4em;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.hero__label::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.hero__name {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: clamp(56px, 8vw, 96px);
+  font-weight: 600; color: var(--white);
+  line-height: 1.1; letter-spacing: .04em; margin-bottom: 8px;
+}
+.hero__name-en {
+  font-size: 13px; letter-spacing: .3em;
+  color: var(--gold); margin-bottom: 40px; text-transform: uppercase;
+}
+.hero__tagline {
+  font-size: 15px; color: rgba(255,255,255,.5);
+  line-height: 2; letter-spacing: .05em;
+  border-left: 2px solid var(--gold); padding-left: 20px;
+}
+.hero__scroll {
+  position: absolute; bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255,255,255,.3); font-size: 9px; letter-spacing: .3em; z-index: 3;
+}
+.hero__scroll-line {
+  width: 1px; height: 60px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollLine 2s ease infinite;
+}
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* INTRO */
+.intro {
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 6vw, 80px);
+  display: grid; grid-template-columns: 1fr 2fr;
+  gap: 80px; align-items: start;
+  max-width: 1200px; margin: 0 auto;
+}
+.intro__label {
+  font-size: 10px; letter-spacing: .4em;
+  color: var(--gold); text-transform: uppercase;
+  padding-top: 8px; position: sticky; top: 100px;
+}
+.intro__body h2 {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 600; line-height: 1.4; margin-bottom: 40px; letter-spacing: .03em;
+}
+.intro__body h2 em {
+  font-style: normal; color: var(--gold);
+  border-bottom: 2px solid var(--gold); padding-bottom: 2px;
+}
+.intro__body p {
+  font-size: 16px; line-height: 2.2; color: #444; margin-bottom: 24px;
+}
+
+/* TIMELINE */
+.timeline-section {
+  background: var(--black);
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 6vw, 80px);
+}
+.timeline-section__inner { max-width: 1200px; margin: 0 auto; }
+.section-header {
+  display: flex; align-items: center; gap: 24px; margin-bottom: 80px;
+}
+.section-header__num { font-size: 11px; letter-spacing: .3em; color: var(--gold); }
+.section-header__title {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 600; color: var(--white); letter-spacing: .05em;
+}
+.section-header__line { flex: 1; height: 1px; background: rgba(255,255,255,.1); }
+
+.timeline { display: grid; gap: 0; }
+.timeline__item {
+  display: grid; grid-template-columns: 120px 1fr;
+  gap: 40px; padding: 40px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  opacity: 0; transform: translateX(-20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.timeline__item.visible { opacity: 1; transform: none; }
+.timeline__item:first-child { padding-top: 0; }
+.timeline__period {
+  font-size: 11px; letter-spacing: .2em;
+  color: var(--gold); padding-top: 4px; text-align: right;
+}
+.timeline__content h3 {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 20px; font-weight: 600; color: var(--white);
+  margin-bottom: 12px; letter-spacing: .05em;
+}
+.timeline__content p { font-size: 14px; line-height: 2; color: rgba(255,255,255,.5); }
+
+/* PHILOSOPHY */
+.philosophy {
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 6vw, 80px);
+  max-width: 1200px; margin: 0 auto;
+}
+.values-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 64px; background: var(--border);
+}
+.value-item {
+  background: var(--white); padding: 48px 36px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.value-item.visible { opacity: 1; transform: none; }
+.value-item__num { font-size: 11px; letter-spacing: .3em; color: var(--gold); margin-bottom: 20px; }
+.value-item__icon { width: 36px; height: 36px; margin-bottom: 20px; }
+.value-item__icon img { width: 100%; height: 100%; object-fit: contain; filter: brightness(0); }
+.value-item__title {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 20px; font-weight: 600; margin-bottom: 16px; letter-spacing: .05em;
+}
+.value-item__text { font-size: 14px; line-height: 2; color: #666; }
+
+/* QUOTE */
+.quote-section {
+  background: var(--black);
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 6vw, 80px);
+  position: relative; overflow: hidden;
+}
+.quote-section::before {
+  content: '笑';
+  position: absolute;
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 40vw; color: rgba(200,169,110,.04);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1; pointer-events: none;
+}
+.quote-section__inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; }
+.quote-section__text {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: clamp(20px, 3.5vw, 36px);
+  font-weight: 600; color: var(--white);
+  line-height: 1.9; letter-spacing: .08em; margin-bottom: 32px;
+}
+.quote-section__text span { color: var(--gold); }
+.quote-section__sub { font-size: 13px; color: rgba(255,255,255,.4); letter-spacing: .15em; }
+
+/* DREAM */
+.dream {
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 6vw, 80px);
+  max-width: 1200px; margin: 0 auto;
+}
+.dream__content {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center; margin-top: 64px;
+}
+.dream__text h3 {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 600; line-height: 1.5; margin-bottom: 32px; letter-spacing: .05em;
+}
+.dream__text h3 span { color: var(--gold); }
+.dream__text p { font-size: 15px; line-height: 2.2; color: #555; margin-bottom: 20px; }
+.dream__visual {
+  aspect-ratio: 1; background: var(--light-gray); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.dream__visual::before {
+  content: '夢';
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 180px; font-weight: 600;
+  color: rgba(200,169,110,.2); line-height: 1;
+}
+
+/* SNS */
+.sns {
+  padding: 64px clamp(24px, 6vw, 80px);
+  border-top: 1px solid var(--border);
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.sns__label { font-size: 10px; letter-spacing: .4em; color: var(--gold); text-transform: uppercase; }
+.sns__links { display: flex; gap: 12px; }
+.sns__link {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--black);
+  font-size: 13px; letter-spacing: .1em;
+  padding: 14px 24px; border: 1px solid var(--border);
+  transition: background .2s, color .2s, border-color .2s;
+}
+.sns__link:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+/* RECRUIT */
+.recruit {
+  background: var(--black);
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 6vw, 80px);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.recruit__text h2 {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 600; color: var(--white);
+  line-height: 1.4; letter-spacing: .05em; margin-bottom: 24px;
+}
+.recruit__text p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 2; }
+.recruit__action { display: flex; justify-content: flex-end; }
+.recruit__btn {
+  display: inline-flex; align-items: center; gap: 16px;
+  text-decoration: none; color: var(--black); background: var(--gold);
+  font-size: 14px; letter-spacing: .15em; padding: 20px 40px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.recruit__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(200,169,110,.3);
+}
+.recruit__btn::after { content: '→'; font-size: 18px; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav { padding: 20px 24px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero__left { padding: 100px 24px 48px; order: 2; background: var(--black); }
+  .hero__right { height: 50svh; order: 1; }
+  .hero__right::after { background: linear-gradient(to bottom, transparent 60%, var(--black)); }
+  .intro { grid-template-columns: 1fr; gap: 32px; }
+  .intro__label { position: static; }
+  .values-grid { grid-template-columns: 1fr; }
+  .dream__content { grid-template-columns: 1fr; }
+  .dream__visual { display: none; }
+  .sns { flex-direction: column; gap: 24px; }
+  .sns__links { flex-wrap: wrap; }
+  .recruit { grid-template-columns: 1fr; gap: 40px; }
+  .recruit__action { justify-content: flex-start; }
+  .timeline__item { grid-template-columns: 72px 1fr; gap: 20px; }
+}
+
+.fade-in {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.fade-in.visible { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
 <nav class="nav">
-  <a href="https://ikushika.com" class="nav__logo">土鍋ご飯 いくしか</a>
-  <a href="https://ikushika.com" class="nav__back">← ホームへ</a>
+  <a href="https://ikushika.com" class="nav__logo">Ikushika</a>
+  <a href="https://ikushika.com" class="nav__back">Home</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero__bg"></div>
-  <div class="hero__grain"></div>
-  <div class="hero__content">
+  <div class="hero__left">
     <p class="hero__label">Chef</p>
-    <h1 class="hero__name">
-      加藤 雄大
-      <span>KATO YUDAI</span>
-    </h1>
+    <h1 class="hero__name">加藤 雄大</h1>
+    <p class="hero__name-en">Kato Yudai</p>
     <p class="hero__tagline">
       笑う門には福来る。<br>
       食を通して、世界を笑顔にする。
     </p>
   </div>
-  <div class="hero__scroll">SCROLL</div>
-</section>
-
-<!-- ORIGIN -->
-<section class="section">
-  <p class="section__eyebrow">Origin</p>
-  <h2 class="section__title">料理人を<br>志したきっかけ</h2>
-
-  <div class="quote-block">
-    <p>「ワンピースのサンジに憧れて、料理人になりたいと思った。」</p>
-    <cite>— 小学生の頃の自分へ</cite>
+  <div class="hero__right">
+    <img
+      src="https://storage.googleapis.com/studio-design-asset-files/projects/8dO8VE7van/s-896x916_v-fs_webp_91b4a53a-49b5-4f60-823d-ab8e56609e0e.jpg"
+      alt="加藤雄大" class="hero__portrait"
+    >
   </div>
-
-  <p style="font-size:16px;line-height:2.2;color:var(--mid);margin-bottom:32px;">
-    福島県相馬市で生まれ育った加藤雄大は、小学生の頃に漫画「ワンピース」のコックキャラクター・サンジに憧れ、料理人の道を夢見るようになりました。勉強好きで、放課後に家庭科室で同級生に勉強を教えるような少年でした。
-  </p>
-
-  <p style="font-size:16px;line-height:2.2;color:var(--mid);">
-    小学5年生の時、東日本大震災を経験。避難生活の中で食料の配給を目の当たりにし、「生きる上で最も大切な食を通して、人々を喜ばせられる存在になりたい」という想いが芽生えました。その経験が、料理人として生きることへの確固たる信念となりました。
-  </p>
+  <div class="hero__scroll">
+    <span>Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
 </section>
 
-<!-- CAREER -->
-<div class="section--dark">
-  <div class="section__inner">
-    <p class="section__eyebrow">Career</p>
-    <h2 class="section__title">いくしかが<br>生まれるまで</h2>
+<section class="intro">
+  <div class="intro__label">Origin</div>
+  <div class="intro__body">
+    <h2 class="fade-in"><em>料理人</em>を<br>志したきっかけ</h2>
+    <p class="fade-in">福島県相馬市で生まれ育った加藤雄大は、小学生の頃に漫画「ワンピース」のコックキャラクター・サンジに憧れ、料理人の道を夢見るようになりました。勉強好きで、放課後に家庭科室で同級生に勉強を教えるような少年でした。</p>
+    <p class="fade-in">小学5年生の時、東日本大震災を経験。避難生活の中で食料の配給を目の当たりにし、「生きる上で最も大切な食を通して、人々を喜ばせられる存在になりたい」という想いが芽生えました。その経験が、料理人として生きることへの確固たる信念となりました。</p>
+  </div>
+</section>
 
-    <div class="story">
-      <div class="story__item">
-        <div class="story__year">福島</div>
-        <div class="story__body">
+<section class="timeline-section">
+  <div class="timeline-section__inner">
+    <div class="section-header">
+      <span class="section-header__num">02</span>
+      <h2 class="section-header__title">いくしかが生まれるまで</h2>
+      <div class="section-header__line"></div>
+    </div>
+    <div class="timeline">
+      <div class="timeline__item">
+        <div class="timeline__period">福島</div>
+        <div class="timeline__content">
           <h3>福島県立相馬東高等学校 卒業</h3>
           <p>生まれ育った福島県相馬市で学び、料理の道への第一歩を踏み出す。</p>
         </div>
       </div>
-      <div class="story__item">
-        <div class="story__year">仙台</div>
-        <div class="story__body">
+      <div class="timeline__item">
+        <div class="timeline__period">仙台</div>
+        <div class="timeline__content">
           <h3>仙台の調理学校（2年制）卒業</h3>
-          <p>料理の基礎を体系的に学ぶ。卒業後、仙台のイタリアンレストランにインターンとして参加。その実力が認められアルバイト、のちに正社員として入社。</p>
+          <p>料理の基礎を体系的に学ぶ。卒業後、仙台のイタリアンレストランにインターンとして参加。実力が認められアルバイト、のちに正社員として入社。</p>
         </div>
       </div>
-      <div class="story__item">
-        <div class="story__year">コロナ禍</div>
-        <div class="story__body">
+      <div class="timeline__item">
+        <div class="timeline__period">コロナ禍</div>
+        <div class="timeline__content">
           <h3>複数業態を渡り歩く</h3>
           <p>コロナ禍での新卒という厳しい状況の中、複数店舗をヘルプで掛け持ち。イタリアンだけでなく居酒屋（焼き鳥）のキッチン・ホールも経験し、幅広いスキルを身につける。</p>
         </div>
       </div>
-      <div class="story__item">
-        <div class="story__year">東京へ</div>
-        <div class="story__body">
+      <div class="timeline__item">
+        <div class="timeline__period">東京へ</div>
+        <div class="timeline__content">
           <h3>株式会社いくしまる.com 入社</h3>
-          <p>前職の転勤で上京後、YouTuberコヤッキーに声をかけられ株式会社いくしまる.comに入社。YouTube撮影で夜型になりがちなスタッフ・演者のために、健康的な社食を毎日作り続けた。</p>
+          <p>前職の転勤で上京後、YouTuberコヤッキーに声をかけられ入社。YouTube撮影で夜型になりがちなスタッフ・演者のために、健康的な社食を毎日作り続けた。</p>
         </div>
       </div>
-      <div class="story__item">
-        <div class="story__year">2022.11</div>
-        <div class="story__body">
+      <div class="timeline__item">
+        <div class="timeline__period">2022.11</div>
+        <div class="timeline__content">
           <h3>「土鍋ご飯いくしか」渋谷PARCO店 OPEN</h3>
-          <p>渋谷PARCOからの出店依頼を受け、飲食事業部を立ち上げ。11月18日、渋谷PARCO B1Fに「土鍋ご飯いくしか」が誕生。</p>
+          <p>渋谷PARCOからの出店依頼を受け飲食事業部を立ち上げ。11月18日、渋谷PARCO B1Fに「土鍋ご飯いくしか」が誕生。</p>
         </div>
       </div>
-      <div class="story__item">
-        <div class="story__year">中目黒</div>
-        <div class="story__body">
+      <div class="timeline__item">
+        <div class="timeline__period">中目黒</div>
+        <div class="timeline__content">
           <h3>中目黒店 OPEN</h3>
           <p>渋谷店との行き来がしやすい立地を探し、中目黒に2店舗目を出店。ディナーには単品注文と全国14種のカップ日本酒を楽しめる夜の定食酒場としても展開。</p>
         </div>
       </div>
     </div>
   </div>
+</section>
+
+<section class="philosophy">
+  <div class="section-header">
+    <span class="section-header__num" style="color:var(--gold)">03</span>
+    <h2 class="section-header__title" style="color:var(--black)">いくしかに込めた想い</h2>
+    <div class="section-header__line" style="background:var(--border)"></div>
+  </div>
+  <div class="values-grid">
+    <div class="value-item">
+      <div class="value-item__num">01</div>
+      <div class="value-item__icon">
+        <img src="https://storage.googleapis.com/studio-design-asset-files/projects/8dO8VE7van/s-256x256_webp_a813aec3-e520-455d-9d4c-d7307138110e.png" alt="ご飯">
+      </div>
+      <div class="value-item__title">ご飯へのこだわり</div>
+      <div class="value-item__text">福島県産米を昆布と共に土鍋で炊き上げ。うまみが凝縮された炊きたてご飯はおかわり無料。</div>
+    </div>
+    <div class="value-item">
+      <div class="value-item__num">02</div>
+      <div class="value-item__icon">
+        <img src="https://storage.googleapis.com/studio-design-asset-files/projects/8dO8VE7van/s-2500x2500_v-frms_webp_a70a8f6e-a6fd-4ef8-9171-c395e0387c76.png" alt="笑顔">
+      </div>
+      <div class="value-item__title">誰よりも楽しく</div>
+      <div class="value-item__text">スタッフもお客様も、誰よりも楽しそうに、笑顔で。それがいくしかの空気をつくる。</div>
+    </div>
+    <div class="value-item">
+      <div class="value-item__num">03</div>
+      <div class="value-item__icon">
+        <img src="https://storage.googleapis.com/studio-design-asset-files/projects/8dO8VE7van/s-256x256_webp_ee167fa7-9edc-45f7-b0e9-ae88255017af.png" alt="ペン">
+      </div>
+      <div class="value-item__title">細部への情熱</div>
+      <div class="value-item__text">料理・お絵かき・細かい作業が好き。どんな仕事も丁寧に、細部まで手を抜かない姿勢。</div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="quote-section__inner">
+    <p class="quote-section__text fade-in">
+      「笑う門には福来る」<br>
+      笑っている人に幸せが訪れるなら、<br>
+      人々を幸せにするには<span>笑顔にしてあげたらいい。</span>
+    </p>
+    <p class="quote-section__sub">— 加藤 雄大</p>
+  </div>
+</section>
+
+<section class="dream">
+  <div class="section-header">
+    <span class="section-header__num" style="color:var(--gold)">04</span>
+    <h2 class="section-header__title" style="color:var(--black)">これからの夢</h2>
+    <div class="section-header__line" style="background:var(--border)"></div>
+  </div>
+  <div class="dream__content">
+    <div class="dream__text fade-in">
+      <h3>食のディズニーランドと、<br><span>福島県相馬市の<br>親善大使を目指す</span></h3>
+      <p>いくしかに行ってよかった、働いてよかった、関われてよかったと思ってもらえる「食のディズニーランド」を目指しています。</p>
+      <p>そして、生まれ育った福島県相馬市の親善大使になること。食を通して自分の名前が広がり、地元の良さを伝えながら、関わってくれた人が「あいつすごい、自分も頑張ろう」と鼓舞できる存在になりたい。</p>
+      <p>震災の日に感じた「食で人を喜ばせたい」という想いは、今も変わっていません。</p>
+    </div>
+    <div class="dream__visual"></div>
+  </div>
+</section>
+
+<div class="sns">
+  <span class="sns__label">Follow</span>
+  <div class="sns__links">
+    <a href="https://x.com/ktranp_19990730?s=21&t=FOyHHGrRY0IeaiRALu6-qw" target="_blank" rel="noopener" class="sns__link">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      X（Twitter）
+    </a>
+    <a href="https://www.instagram.com/ktranp0730?igsh=YWQ0cG05dmZhMXFw&utm_source=qr" target="_blank" rel="noopener" class="sns__link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Instagram
+    </a>
+  </div>
 </div>
 
-<!-- PHILOSOPHY -->
-<section class="section">
-  <p class="section__eyebrow">Philosophy</p>
-  <h2 class="section__title">いくしかに込めた<br>想い</h2>
-
-  <p style="font-size:16px;line-height:2.2;color:var(--mid);margin-bottom:40px;">
-    「一人でも、友達とでも、家族とでも、<strong style="color:var(--accent)">あのお店、行くしかないよね</strong>と思ってもらえる場所を作りたい」——その想いから生まれた名前が「いくしか」です。
-  </p>
-
-  <p style="font-size:16px;line-height:2.2;color:var(--mid);margin-bottom:40px;">
-    日本人が毎日食べるもの、それはご飯。だからこそ「ご飯」にとことんこだわった定食屋を作ることにしました。福島県産米を昆布と共に土鍋で炊き上げ、お櫃に入れて最適な水分量でご提供するのも、その想いの表れです。
-  </p>
-
-  <div class="quote-block">
-    <p>座右の銘は「笑う門には福来る」。<br>笑っている人に幸せが訪れるなら、人々を幸せにするには笑顔にしてあげたらいい。</p>
-    <cite>— 加藤 雄大</cite>
+<section class="recruit">
+  <div class="recruit__text">
+    <h2>一緒に働きたい方、<br>募集しています。</h2>
+    <p>誰よりも楽しく、笑顔で。<br>食のディズニーランドを一緒に作ってくれる仲間を待っています。</p>
   </div>
-
-  <div class="values">
-    <div class="value-card">
-      <div class="value-card__icon">
-        <img src="https://storage.googleapis.com/studio-design-asset-files/projects/8dO8VE7van/s-256x256_webp_a813aec3-e520-455d-9d4c-d7307138110e.png" alt="ご飯" style="width:40px;height:40px;object-fit:contain;filter:invert(40%) sepia(30%) saturate(500%) hue-rotate(340deg) brightness(80%);">
-      </div>
-      <div class="value-card__title">ご飯へのこだわり</div>
-      <div class="value-card__text">福島県産米を昆布と共に土鍋で炊き上げ。うまみが凝縮された炊きたてご飯はおかわり無料。</div>
-    </div>
-    <div class="value-card">
-      <div class="value-card__icon">
-        <img src="https://storage.googleapis.com/studio-design-asset-files/projects/8dO8VE7van/s-2500x2500_v-frms_webp_a70a8f6e-a6fd-4ef8-9171-c395e0387c76.png" alt="笑顔" style="width:40px;height:40px;object-fit:contain;filter:invert(40%) sepia(30%) saturate(500%) hue-rotate(340deg) brightness(80%);">
-      </div>
-      <div class="value-card__title">誰よりも楽しく</div>
-      <div class="value-card__text">スタッフもお客様も、誰よりも楽しそうに、笑顔で。それがいくしかの空気をつくる。</div>
-    </div>
-    <div class="value-card">
-      <div class="value-card__icon">
-        <img src="https://storage.googleapis.com/studio-design-asset-files/projects/8dO8VE7van/s-256x256_webp_ee167fa7-9edc-45f7-b0e9-ae88255017af.png" alt="ペン" style="width:40px;height:40px;object-fit:contain;filter:invert(40%) sepia(30%) saturate(500%) hue-rotate(340deg) brightness(80%);">
-      </div>
-      <div class="value-card__title">細部への情熱</div>
-      <div class="value-card__text">料理・お絵かき・細かい作業が好き。どんな仕事も丁寧に、細部まで手を抜かない姿勢。</div>
-    </div>
+  <div class="recruit__action">
+    <a href="https://ikushika.github.io/recruit/" class="recruit__btn">採用情報を見る</a>
   </div>
-</section>
-
-
-<!-- DREAM -->
-<section class="section--dark">
-  <div class="section__inner">
-    <p class="section__eyebrow">Dream</p>
-    <h2 class="section__title">これからの夢</h2>
-
-    <div class="dream">
-      <h3 class="dream__title">
-        食のディズニーランドと、<br>
-        <span style="color:var(--gold)">福島県相馬市の親善大使</span>へ
-      </h3>
-      <p class="dream__text">
-        いくしかに<span class="dream__gold">行ってよかった、働いてよかった、関われてよかった</span>と思ってもらえる「食のディズニーランド」を目指しています。<br><br>
-        そして、生まれ育った福島県相馬市の親善大使になること。食を通して自分の名前が広がり、地元の良さを伝えながら、関わってくれた人が「あいつすごい、自分も頑張ろう」と鼓舞できる存在になりたい。<br><br>
-        震災の日に感じた「食で人を喜ばせたい」という想いは、今も変わっていません。
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- RECRUIT CTA -->
-<section class="recruit-cta">
-  <h2 class="recruit-cta__title">
-    一緒に働きたい方、<br>募集しています。
-  </h2>
-  <p class="recruit-cta__text">
-    誰よりも楽しく、笑顔で。<br>
-    食のディズニーランドを一緒に作ってくれる仲間を待っています。
-  </p>
-  <a href="https://ikushika.github.io/recruit/" class="recruit-cta__btn">
-    採用情報を見る →
-  </a>
 </section>
 
 <script>
-  // Intersection Observer for scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 120);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+function animateRing() {
+  rx += (mx - rx) * .12;
+  ry += (my - ry) * .12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
 
-  document.querySelectorAll('.story__item, .value-card').forEach(el => {
-    observer.observe(el);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      observer.unobserve(entry.target);
+    }
   });
+}, { threshold: 0.1 });
+document.querySelectorAll('.timeline__item, .value-item, .fade-in').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
