@@ -51,28 +51,75 @@ body {
 
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 200;
   padding: 20px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  mix-blend-mode: difference;
 }
 .nav__logo {
   font-size: 12px; letter-spacing: .25em;
   color: var(--white); text-decoration: none; text-transform: uppercase;
+  mix-blend-mode: difference;
+  position: relative; z-index: 201;
 }
-.nav__back {
-  font-size: 11px; letter-spacing: .2em;
-  color: var(--white); text-decoration: none;
-  display: flex; align-items: center; gap: 8px;
+.nav__hamburger {
+  width: 40px; height: 40px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center; gap: 6px;
+  cursor: none; position: relative; z-index: 201;
+  background: none; border: none; padding: 0;
 }
-.nav__back::before {
-  content: ''; width: 24px; height: 1px;
-  background: var(--white); display: block;
-  transition: width .3s ease;
+.nav__hamburger span {
+  display: block; width: 24px; height: 1px;
+  background: var(--white);
+  transition: transform .4s ease, opacity .4s ease, width .4s ease;
+  mix-blend-mode: difference;
 }
-.nav__back:hover::before { width: 40px; }
+.nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+.nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* MENU OVERLAY */
+.menu-overlay {
+  position: fixed; inset: 0; z-index: 199;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .5s ease;
+}
+.menu-overlay.open { opacity: 1; pointer-events: all; }
+.menu-overlay__inner { text-align: center; }
+.menu-overlay__item {
+  display: block; text-decoration: none;
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 600; color: var(--white);
+  letter-spacing: .08em; padding: 16px 0;
+  transition: color .2s ease;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .4s ease, transform .4s ease, color .2s ease;
+}
+.menu-overlay.open .menu-overlay__item {
+  opacity: 1; transform: none;
+}
+.menu-overlay.open .menu-overlay__item:nth-child(1) { transition-delay: .1s; }
+.menu-overlay.open .menu-overlay__item:nth-child(2) { transition-delay: .15s; }
+.menu-overlay.open .menu-overlay__item:nth-child(3) { transition-delay: .2s; }
+.menu-overlay.open .menu-overlay__item:nth-child(4) { transition-delay: .25s; }
+.menu-overlay.open .menu-overlay__item:nth-child(5) { transition-delay: .3s; }
+.menu-overlay__item:hover { color: var(--gold); }
+.menu-overlay__back {
+  display: inline-flex; align-items: center; gap: 12px;
+  text-decoration: none; color: rgba(255,255,255,.4);
+  font-size: 13px; letter-spacing: .2em;
+  margin-top: 40px;
+  transition: color .2s;
+}
+.menu-overlay__back::before {
+  content: ''; width: 24px; height: 1px; background: currentColor;
+}
+.menu-overlay__back:hover { color: var(--gold); }
 
 /* HERO */
 .hero {
@@ -269,61 +316,89 @@ body {
 .dream__text h3 span { color: var(--gold); }
 .dream__text p { font-size: 15px; line-height: 2.2; color: #555; margin-bottom: 20px; }
 .dream__visual {
-  aspect-ratio: 1; background: var(--light-gray); border-radius: 2px;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
+  aspect-ratio: 1; border-radius: 2px;
+  overflow: hidden; position: relative;
 }
-.dream__visual::before {
-  content: '夢';
-  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
-  font-size: 180px; font-weight: 600;
-  color: rgba(200,169,110,.2); line-height: 1;
+.dream__visual img {
+  width: 100%; height: 100%;
+  object-fit: contain; display: block;
 }
 
 /* SNS */
 .sns {
-  padding: 64px clamp(24px, 6vw, 80px);
-  border-top: 1px solid var(--border);
-  max-width: 1200px; margin: 0 auto;
-  display: flex; justify-content: space-between; align-items: center;
+  background: var(--light-gray);
+  padding: clamp(64px, 8vw, 100px) clamp(24px, 6vw, 80px);
+  text-align: center;
 }
-.sns__label { font-size: 10px; letter-spacing: .4em; color: var(--gold); text-transform: uppercase; }
-.sns__links { display: flex; gap: 12px; }
+.sns__label {
+  font-size: 10px; letter-spacing: .4em; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 8px; display: block;
+}
+.sns__title {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: clamp(22px, 4vw, 36px); font-weight: 600;
+  letter-spacing: .05em; margin-bottom: 40px;
+}
+.sns__links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .sns__link {
-  display: flex; align-items: center; gap: 10px;
-  text-decoration: none; color: var(--black);
-  font-size: 13px; letter-spacing: .1em;
-  padding: 14px 24px; border: 1px solid var(--border);
-  transition: background .2s, color .2s, border-color .2s;
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; color: var(--white);
+  font-size: 14px; letter-spacing: .1em;
+  padding: 18px 36px; background: var(--black);
+  transition: background .2s, transform .2s;
 }
-.sns__link:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+.sns__link:hover { background: var(--gold); transform: translateY(-2px); }
+.sns__link--x { background: #000; }
+.sns__link--ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+.sns__link--ig:hover { background: linear-gradient(135deg, #6a2d9a, #d41515, #e09a35); }
 
 /* RECRUIT */
 .recruit {
   background: var(--black);
   padding: clamp(80px, 12vw, 160px) clamp(24px, 6vw, 80px);
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: center;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.recruit::before {
+  content: 'JOIN US';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(80px, 15vw, 200px);
+  font-weight: 700; letter-spacing: .1em;
+  color: rgba(255,255,255,.03);
+  pointer-events: none; white-space: nowrap;
+}
+.recruit__inner { position: relative; max-width: 700px; margin: 0 auto; }
+.recruit__label {
+  font-size: 10px; letter-spacing: .4em; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 24px; display: block;
 }
 .recruit__text h2 {
   font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
-  font-size: clamp(28px, 4vw, 52px);
+  font-size: clamp(28px, 5vw, 56px);
   font-weight: 600; color: var(--white);
   line-height: 1.4; letter-spacing: .05em; margin-bottom: 24px;
 }
-.recruit__text p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 2; }
-.recruit__action { display: flex; justify-content: flex-end; }
+.recruit__text p {
+  font-size: 15px; color: rgba(255,255,255,.5);
+  line-height: 2; margin-bottom: 48px;
+}
 .recruit__btn {
   display: inline-flex; align-items: center; gap: 16px;
   text-decoration: none; color: var(--black); background: var(--gold);
-  font-size: 14px; letter-spacing: .15em; padding: 20px 40px;
-  transition: transform .2s ease, box-shadow .2s ease;
+  font-size: 15px; letter-spacing: .2em; padding: 22px 56px;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s;
 }
 .recruit__btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(200,169,110,.3);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(200,169,110,.4);
+  background: var(--gold-light);
 }
-.recruit__btn::after { content: '→'; font-size: 18px; }
+.recruit__btn::after { content: '→'; font-size: 20px; }
+.recruit__sub {
+  margin-top: 24px; font-size: 12px;
+  color: rgba(255,255,255,.3); letter-spacing: .1em;
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -339,8 +414,7 @@ body {
   .dream__visual { display: none; }
   .sns { flex-direction: column; gap: 24px; }
   .sns__links { flex-wrap: wrap; }
-  .recruit { grid-template-columns: 1fr; gap: 40px; }
-  .recruit__action { justify-content: flex-start; }
+  .recruit__btn { width: 100%; justify-content: center; }
   .timeline__item { grid-template-columns: 72px 1fr; gap: 20px; }
 }
 
@@ -356,9 +430,22 @@ body {
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <a href="#origin" class="menu-overlay__item" onclick="closeMenu()">Origin — はじまり</a>
+    <a href="#career" class="menu-overlay__item" onclick="closeMenu()">Career — 経歴</a>
+    <a href="#philosophy" class="menu-overlay__item" onclick="closeMenu()">Philosophy — 想い</a>
+    <a href="#dream" class="menu-overlay__item" onclick="closeMenu()">Dream — 夢</a>
+    <a href="#recruit" class="menu-overlay__item" onclick="closeMenu()">Recruit — 採用</a>
+    <a href="https://ikushika.com" class="menu-overlay__back">ホームへ戻る</a>
+  </div>
+</div>
+
 <nav class="nav">
   <a href="https://ikushika.com" class="nav__logo">Ikushika</a>
-  <a href="https://ikushika.com" class="nav__back">Home</a>
+  <button class="nav__hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <section class="hero">
@@ -383,7 +470,7 @@ body {
   </div>
 </section>
 
-<section class="intro">
+<section class="intro" id="origin">
   <div class="intro__label">Origin</div>
   <div class="intro__body">
     <h2 class="fade-in"><em>料理人</em>を<br>志したきっかけ</h2>
@@ -392,7 +479,7 @@ body {
   </div>
 </section>
 
-<section class="timeline-section">
+<section class="timeline-section" id="career">
   <div class="timeline-section__inner">
     <div class="section-header">
       <span class="section-header__num">02</span>
@@ -446,7 +533,7 @@ body {
   </div>
 </section>
 
-<section class="philosophy">
+<section class="philosophy" id="philosophy">
   <div class="section-header">
     <span class="section-header__num" style="color:var(--gold)">03</span>
     <h2 class="section-header__title" style="color:var(--black)">いくしかに込めた想い</h2>
@@ -491,7 +578,7 @@ body {
   </div>
 </section>
 
-<section class="dream">
+<section class="dream" id="dream">
   <div class="section-header">
     <span class="section-header__num" style="color:var(--gold)">04</span>
     <h2 class="section-header__title" style="color:var(--black)">これからの夢</h2>
@@ -504,25 +591,28 @@ body {
       <p>そして、生まれ育った福島県相馬市の親善大使になること。食を通して自分の名前が広がり、地元の良さを伝えながら、関わってくれた人が「あいつすごい、自分も頑張ろう」と鼓舞できる存在になりたい。</p>
       <p>震災の日に感じた「食で人を喜ばせたい」という想いは、今も変わっていません。</p>
     </div>
-    <div class="dream__visual"></div>
+    <div class="dream__visual">
+      <img src="https://storage.googleapis.com/studio-design-asset-files/projects/8dO8VE7van/s-1254x1254_v-fms_webp_78ff0cad-d7bd-4d22-99ae-339a69d835d4.png" alt="夢">
+    </div>
   </div>
 </section>
 
 <div class="sns">
   <span class="sns__label">Follow</span>
+  <p class="sns__title">SNSでも発信中</p>
   <div class="sns__links">
-    <a href="https://x.com/ktranp_19990730?s=21&t=FOyHHGrRY0IeaiRALu6-qw" target="_blank" rel="noopener" class="sns__link">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      X（Twitter）
+    <a href="https://x.com/ktranp_19990730?s=21&t=FOyHHGrRY0IeaiRALu6-qw" target="_blank" rel="noopener" class="sns__link sns__link--x">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      X（Twitter）をフォロー
     </a>
-    <a href="https://www.instagram.com/ktranp0730?igsh=YWQ0cG05dmZhMXFw&utm_source=qr" target="_blank" rel="noopener" class="sns__link">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      Instagram
+    <a href="https://www.instagram.com/ktranp0730?igsh=YWQ0cG05dmZhMXFw&utm_source=qr" target="_blank" rel="noopener" class="sns__link sns__link--ig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Instagramをフォロー
     </a>
   </div>
 </div>
 
-<section class="recruit">
+<section class="recruit" id="recruit">
   <div class="recruit__text">
     <h2>一緒に働きたい方、<br>募集しています。</h2>
     <p>誰よりも楽しく、笑顔で。<br>食のディズニーランドを一緒に作ってくれる仲間を待っています。</p>
@@ -533,6 +623,21 @@ body {
 </section>
 
 <script>
+// Menu
+function toggleMenu() {
+  const overlay = document.getElementById('menuOverlay');
+  const hamburger = document.getElementById('hamburger');
+  overlay.classList.toggle('open');
+  hamburger.classList.toggle('open');
+}
+function closeMenu() {
+  const overlay = document.getElementById('menuOverlay');
+  const hamburger = document.getElementById('hamburger');
+  overlay.classList.remove('open');
+  hamburger.classList.remove('open');
+}
+
+// Custom cursor
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -542,8 +647,8 @@ document.addEventListener('mousemove', e => {
   cursor.style.top = my + 'px';
 });
 function animateRing() {
-  rx += (mx - rx) * .12;
-  ry += (my - ry) * .12;
+  rx += (mx - rx) * .25;
+  ry += (my - ry) * .25;
   ring.style.left = rx + 'px';
   ring.style.top = ry + 'px';
   requestAnimationFrame(animateRing);
